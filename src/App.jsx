@@ -34,8 +34,9 @@ function App() {
 
   return (
     <>
+    
    <div className="container mt-5 text-center">
-   <div className="card p-4  mb-5 text-center bg-secondary text-light">
+   <div className="card p-4  mb-5 text-center bg-secondary text-light ">
             <h3>Task Done</h3>
             <p>Keep it up</p>
             <div className="progress-circle">
@@ -60,6 +61,7 @@ function App() {
             key={index}
             className={`list-group-item d-flex justify-content-between align-items-center ${task.completed ? "text-decoration-line-through" : ""}`}
           >
+
             <span onClick={() => toggleTask(index)}>⬜ {task.text}</span>
             <div>
               <button className="btn btn-warning btn-sm mx-1" onClick={() => editTask(index)}>
