@@ -1,11 +1,23 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import "./index.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [tasks, setTasks] = useState([])
   const [newTask, setNewTask] = useState("")
-
+  const [tasks, setTasks] = useState(() => {
+    const localValue = localStorage.getItem("TASKS")
+    if(localValue == null) {
+      return []
+    }
+    else{
+    return JSON.parse(localValue)
+    }
+  })
+  
+  useEffect(() => {
+    localStorage.setItem("TASKS", JSON.stringify(tasks))
+  }, [tasks])
+  
   const addTask = () => {
     if (newTask.trim() === "") return
     setTasks([...tasks, { text: newTask, completed: false }])
